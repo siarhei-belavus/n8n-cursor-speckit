@@ -1,5 +1,13 @@
 # Quick Start Guide
 
+## Prerequisites
+
+**Before installing n8n Speckit, you need the n8n-MCP server:**
+
+- Install from: https://github.com/czlonkowski/n8n-mcp
+- Configure it in your Cursor MCP settings
+- The MCP server enables AI assistants to interact with n8n workflows
+
 ## Installation (5 minutes)
 
 ### Step 1: Clone the Repository

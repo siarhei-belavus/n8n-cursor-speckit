@@ -2,6 +2,19 @@
 
 > A systematic, quality-driven approach to building production-ready n8n workflows
 
+## Prerequisites
+
+### Required: n8n MCP Server
+
+This framework requires the **n8n-MCP** server to be installed and configured in Cursor. The MCP server provides AI assistants with the ability to interact with n8n's API and build workflows programmatically.
+
+**Install n8n-MCP:**
+- Repository: https://github.com/czlonkowski/n8n-mcp
+- Follow the installation instructions in the n8n-MCP documentation
+- Configure it in your Cursor MCP settings
+
+Once n8n-MCP is installed and configured, you can proceed with installing the Speckit framework below.
+
 ## Installation
 
 ### Recommended: Clone and Install
