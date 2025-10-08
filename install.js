@@ -190,6 +190,26 @@ function makeScriptsExecutable(targetDir) {
   return { count, failed };
 }
 
+// Check if directory is a git repository
+function isGitRepo(dirPath) {
+  const gitDir = path.join(dirPath, '.git');
+  return fs.existsSync(gitDir);
+}
+
+// Initialize git repository
+async function initGitRepo(dirPath) {
+  const { execSync } = require('child_process');
+  
+  try {
+    execSync('git init', { cwd: dirPath, stdio: 'pipe' });
+    log(`  ✓ Initialized git repository`, colors.green);
+    return true;
+  } catch (error) {
+    log(`  ✗ Failed to initialize git: ${error.message}`, colors.red);
+    return false;
+  }
+}
+
 // Prompt user for yes/no
 function prompt(question) {
   const rl = readline.createInterface({
@@ -270,6 +290,18 @@ async function install() {
   }
 
   log(`📂 Target: ${targetDir}\n`, colors.cyan);
+
+  // Check for git repository
+  if (!isGitRepo(targetDir) && !skipPrompts) {
+    log('⚠️  No git repository detected in target directory\n', colors.yellow);
+    const shouldInitGit = await prompt('Initialize git repository? (y/n):');
+    
+    if (shouldInitGit) {
+      log('\n🔧 Initializing git repository...\n', colors.bright);
+      await initGitRepo(targetDir);
+    }
+    log('');
+  }
 
   if (force) {
     log('⚡ Force mode: Will overwrite all existing files\n', colors.yellow);
