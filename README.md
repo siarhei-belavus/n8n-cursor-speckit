@@ -6,7 +6,10 @@
 
 ### Required: n8n MCP Server
 
-This framework requires the **n8n-MCP** server to be installed and configured in Cursor. The MCP server provides AI assistants with the ability to interact with n8n's API and build workflows programmatically.
+This framework requires the **n8n-MCP** server to be installed and configured in Cursor. The MCP server provides AI assistants with the ability to:
+- Interact with n8n's API and build workflows programmatically
+- Fetch actual n8n node documentation
+- Validate node syntax and configuration
 
 **Install n8n-MCP:**
 - Repository: https://github.com/czlonkowski/n8n-mcp

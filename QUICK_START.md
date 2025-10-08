@@ -6,7 +6,10 @@
 
 - Install from: https://github.com/czlonkowski/n8n-mcp
 - Configure it in your Cursor MCP settings
-- The MCP server enables AI assistants to interact with n8n workflows
+- The MCP server enables AI assistants to:
+  - Interact with n8n workflows programmatically
+  - Fetch actual n8n node documentation
+  - Validate node syntax and configuration
 
 ## Installation (5 minutes)
 
