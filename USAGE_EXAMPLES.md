@@ -221,33 +221,7 @@ You have Python code that needs to become an n8n workflow.
 
 ---
 
-## Example 7: Quick Prototype vs Production
-
-### Quick Prototype (< 30 minutes)
-```bash
-# Use built-in n8n.build command
-/n8n.build Create a webhook that sends Slack messages
-```
-
-### Production Version (1-2 hours)
-```bash
-# Use full Speckit
-/n8n.specify Create a production-ready webhook handler with validation,
-error handling, logging, and monitoring
-
-/n8n.clarify
-/n8n.plan
-/n8n.implement
-/n8n.analyze
-```
-
-### When to Use Each
-- **Prototype**: Testing ideas, demos, personal projects
-- **Production**: Team projects, customer-facing, long-term maintenance
-
----
-
-## Example 8: Team Collaboration
+## Example 7: Team Collaboration
 
 ### Scenario
 Multiple developers working on different workflows.
@@ -296,7 +270,7 @@ git pull
 
 ---
 
-## Example 9: Debugging Existing Workflow
+## Example 8: Debugging Existing Workflow
 
 ### Scenario
 Production workflow has issues, need to debug and fix.
@@ -323,7 +297,7 @@ Production workflow has issues, need to debug and fix.
 
 ---
 
-## Example 10: Adding Tests to Existing Workflow
+## Example 9: Adding Tests to Existing Workflow
 
 ### Scenario
 You have a working workflow but no tests.
@@ -390,7 +364,7 @@ You have a working workflow but no tests.
 ## Tips & Tricks
 
 ### Tip 1: Start Small
-Don't use full Speckit for trivial workflows. Use `/n8n.build` for quick tasks.
+Don't use full Speckit for trivial workflows.
 
 ### Tip 2: Invest in Clarification
 5 minutes of clarification saves hours of rework. Answer all questions thoughtfully.
@@ -416,7 +390,7 @@ Run manual tests before `/n8n.analyze`. It's faster to catch obvious issues your
 ### Tip 9: Use Dry Run
 Use `--dry-run` flag with `/n8n.align` to preview changes before applying.
 
-### Tip 10: Document Decisions
+### Tip 10: Document Decisions (optional)
 Use `research.md` to document why you chose specific nodes or approaches.
 
 ---

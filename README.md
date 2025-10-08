@@ -1019,72 +1019,6 @@ Analyze: Validate all sub-workflows + parent coordination
 
 ---
 
-## Comparison: Traditional vs. Speckit
-
-### Traditional Approach
-
-```
-1. Get vague requirement
-2. Start building in n8n UI
-3. Realize requirement unclear
-4. Ask questions mid-build
-5. Rebuild parts of workflow
-6. Test, find issues
-7. Fix issues
-8. Deploy, hope it works
-9. Issues in production
-10. Emergency fixes
-
-Time: 2-3 days
-Rework: 40%
-Documentation: Minimal
-Quality: Variable
-```
-
-### Speckit Approach
-
-```
-1. /n8n.specify (30 min)
-2. /n8n.clarify (15 min)
-3. /n8n.plan (45 min)
-4. /n8n.checklist (10 min)
-5. /n8n.tasks (15 min)
-6. /n8n.implement (2-3 hours)
-7. /n8n.analyze (15 min)
-8. Deploy with confidence
-
-Time: 1-1.5 days
-Rework: 5%
-Documentation: Complete
-Quality: Consistent, high
-```
-
-**Savings:** 40-50% time reduction, 90% less rework, complete documentation
-
----
-
-## Integration with Existing n8n Commands
-
-The n8n Speckit complements existing n8n commands:
-
-### Use `/n8n.build` for quick workflows
-- **When**: Simple workflows, prototypes, well-defined requirements
-- **Process**: Requirements → Clarify → Generate workflow
-
-### Use **n8n Speckit** for production workflows
-- **When**: Complex workflows, team projects, long-term maintenance
-- **Process**: Specify → Clarify → Plan → Tasks → Implement → Analyze
-
-### Use `/n8n.code` for conversions
-- **When**: Converting existing code to n8n
-- **Then**: Use `/n8n.analyze` to validate result
-
-### Use `/n8n.fix` for debugging
-- **When**: Existing workflow has issues
-- **Then**: Use `/n8n.analyze` to find all issues systematically
-
----
-
 ## Testing Strategies
 
 The n8n Speckit integrates multiple testing levels to ensure workflow quality:
@@ -1505,7 +1439,7 @@ feature/webhook-processor/
 ### "Too much overhead for simple workflows"
 
 **Solution**: Use appropriate commands for complexity
-- Simple (< 5 nodes): Use `/n8n.build`
+- Simple/experimentation/ad-hoc (< 5 nodes): Do not use Speckit
 - Medium (5-15 nodes): Use Specify → Plan → Implement
 - Complex (> 15 nodes): Use full Speckit workflow
 
@@ -1535,16 +1469,10 @@ feature/webhook-processor/
 ## FAQ
 
 **Q: Do I need to use all commands for every workflow?**
-A: No. Use appropriate commands for complexity:
-- Simple workflows: `/n8n.build`
-- Production workflows: Full Speckit
-- Code conversions: `/n8n.code` + `/n8n.analyze`
+A: No. Use appropriate commands for complexity.
 
 **Q: Can I skip the clarification phase?**
 A: Yes, but only if requirements are completely clear. Clarification prevents rework.
-
-**Q: How long does the full Speckit process take?**
-A: 1-2 days for complex workflows vs. 2-3 days traditional (with less rework).
 
 **Q: Can I use this for existing workflows?**
 A: Yes! Use `/n8n.specify` to create initial spec from workflow description, then `/n8n.align` to sync with actual workflow JSON.
@@ -1556,7 +1484,7 @@ A: Plans are editable. Modify `plan.md`, then regenerate tasks.
 A: No. They catch issues early, preventing costly late-stage fixes.
 
 **Q: Is this overkill for personal projects?**
-A: Use full workflow for projects you'll maintain long-term. Use `/n8n.build` for quick experiments.
+A: Use full workflow for projects you'll maintain long-term.
 
 **Q: What if I manually edit the workflow in n8n UI?**
 A: Run `/n8n.align` to sync the spec with your changes. It analyzes the workflow JSON and updates documentation automatically.
