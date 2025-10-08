@@ -1,0 +1,41 @@
+{
+  "name": "n8n-cursor-speckit",
+  "version": "1.0.0",
+  "description": "A systematic, quality-driven approach to building production-ready n8n workflows",
+  "main": "install.js",
+  "bin": {
+    "n8n-speckit-install": "./install.js"
+  },
+  "scripts": {
+    "install:n8n-sk": "node install.js",
+    "install:force": "node install.js --force",
+    "test": "bash test-install.sh",
+    "postinstall": "echo '\n✨ n8n Cursor Speckit ready! Run \"npm run install:n8n-sk\" to install to your project.\n'"
+  },
+  "files": [
+    "install.js",
+    ".cursor/commands/*.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "n8n",
+    "workflow",
+    "cursor",
+    "speckit",
+    "automation",
+    "cursor-ai",
+    "workflow-automation",
+    "development-framework"
+  ],
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/n8n-cursor-speckit.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
+

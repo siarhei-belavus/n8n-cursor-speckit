@@ -1,0 +1,36 @@
+# Development files
+.git
+.gitignore
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Test files
+test/
+tests/
+test-install/
+test-install.sh
+*.test.js
+*.spec.js
+
+# Development docs (include in repo, exclude from package)
+CONTRIBUTING.md
+USAGE_EXAMPLES.md
+QUICK_START.md
+
+# Documentation (except README and LICENSE)
+docs/
+.github/
+
+# IDE
+.vscode/
+.idea/
+*.iml
+.cursor/.cursorrules
+
+# Temporary files
+tmp/
+temp/
+*.log
+
