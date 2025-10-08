@@ -79,7 +79,9 @@ After installation, open Cursor in your project and type `/n8n.` - you should se
 
 ## Overview
 
-The **n8n Speckit** is an adaptation of the Speckit software development framework specifically designed for n8n workflow development. It provides a structured methodology for going from idea to production-ready workflow with comprehensive documentation, validation, and quality gates.
+The **n8n Speckit** is an adaptation of the [Speckit software development framework](https://github.com/github/spec-kit) specifically designed for n8n workflow development. It provides a structured methodology for going from idea to production-ready workflow with comprehensive documentation, validation, and quality gates.
+
+**Inspired by**: This framework is inspired by GitHub's [Spec-Kit](https://github.com/github/spec-kit), which pioneered the spec-driven development approach for general software engineering.
 
 ### Why Use n8n Speckit?
 
@@ -1580,6 +1582,17 @@ The **n8n Speckit** brings software engineering rigor to n8n workflow developmen
 ```
 
 **Key innovation**: The `/n8n.align` command ensures your specification remains the single source of truth, automatically syncing with workflow changes.
+
+## Acknowledgements
+
+This project is inspired by and adapted from GitHub's [Spec-Kit](https://github.com/github/spec-kit), which pioneered the spec-driven development methodology for software engineering. The n8n Speckit applies these proven principles specifically to n8n workflow development, bringing systematic quality and documentation practices to the n8n ecosystem.
+
+Special thanks to:
+- **GitHub's Spec-Kit team** for creating the foundational spec-driven development framework
+- **The n8n community** for building an amazing workflow automation platform
+- **n8n-MCP contributors** for enabling programmatic n8n workflow interaction through the Model Context Protocol
+
+---
 
 Happy workflow building! 🚀
 
