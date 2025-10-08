@@ -378,7 +378,7 @@ return items.map(item => ({
 
 #### Workflow Execution Testing (CLI-Based)
 - **Approach**: Execute workflow via n8n CLI and validate outputs
-- **Tool**: `n8n execute --id <workflow-id> --rawOutput`
+- **Tool**: `n8n execute --id <workflow-id>`
 - **Test Runner**: Jest, Mocha, or simple Bash scripts
 - **Example**:
   ```javascript
@@ -392,6 +392,48 @@ return items.map(item => ({
   });
   ```
 - **When**: Integration testing, CI/CD pipelines
+
+**CI/CD Testing with Testcontainers:**
+
+For isolated, reproducible testing in CI/CD pipelines, consider using [Testcontainers](https://testcontainers.com/) to spin up n8n:
+
+```javascript
+import { GenericContainer } from 'testcontainers';
+
+describe('n8n workflow tests', () => {
+  let n8nContainer;
+  let n8nUrl;
+
+  beforeAll(async () => {
+    // Start n8n container
+    n8nContainer = await new GenericContainer('n8nio/n8n')
+      .withExposedPorts(5678)
+      .withEnvironment({
+        N8N_BASIC_AUTH_ACTIVE: 'false',
+        N8N_DIAGNOSTICS_ENABLED: 'false'
+      })
+      .start();
+    
+    const port = n8nContainer.getMappedPort(5678);
+    n8nUrl = `http://localhost:${port}`;
+  });
+
+  afterAll(async () => {
+    await n8nContainer.stop();
+  });
+
+  test('workflow executes correctly', async () => {
+    // Upload workflow to n8n
+    // Execute and validate results
+  });
+});
+```
+
+**Benefits:**
+- ✅ Isolated test environment per CI run
+- ✅ No dependency on external n8n instance
+- ✅ Automatic cleanup after tests
+- ✅ Reproducible across different environments
 
 #### End-to-End Testing (Behavior-Based)
 - **Approach**: Trigger workflow and validate side effects

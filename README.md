@@ -1334,6 +1334,46 @@ jobs:
           path: test-results/
 ```
 
+**Using Testcontainers for Isolated Testing:**
+
+For CI/CD pipelines, [Testcontainers](https://testcontainers.com/) provides isolated, reproducible n8n instances:
+
+```javascript
+import { GenericContainer } from 'testcontainers';
+
+describe('n8n workflow integration tests', () => {
+  let n8nContainer;
+  let n8nUrl;
+
+  beforeAll(async () => {
+    n8nContainer = await new GenericContainer('n8nio/n8n')
+      .withExposedPorts(5678)
+      .withEnvironment({
+        N8N_BASIC_AUTH_ACTIVE: 'false',
+        N8N_DIAGNOSTICS_ENABLED: 'false'
+      })
+      .start();
+    
+    n8nUrl = `http://localhost:${n8nContainer.getMappedPort(5678)}`;
+  });
+
+  afterAll(async () => {
+    await n8nContainer.stop();
+  });
+
+  test('workflow executes correctly', async () => {
+    // Use n8n API to upload and execute workflow
+    // Validate results
+  });
+});
+```
+
+**Benefits:**
+- ✅ Isolated environment per test run
+- ✅ No dependency on external n8n instance
+- ✅ Automatic cleanup
+- ✅ Works in any CI/CD platform (GitHub Actions, GitLab CI, Jenkins, etc.)
+
 **Pipeline Stages:**
 1. **MCP Validation** - Fast, blocks on failure
 2. **CLI Execution** - Medium, blocks on failure
