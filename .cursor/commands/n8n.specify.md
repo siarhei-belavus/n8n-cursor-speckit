@@ -15,6 +15,28 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Create a complete, implementation-ready specification for an n8n workflow that captures WHAT the workflow should do without specifying HOW (node types, specific configurations).
 
+## Workflow Development Philosophy
+
+### Template-First Mindset
+
+Before creating a specification, consider that **2,500+ n8n templates exist** that may already solve the user's problem or provide a strong starting point. During specification, identify:
+
+- **Primary task type**: webhook handling, data sync, AI automation, notifications, etc.
+- **Key services/integrations**: Slack, Google Sheets, OpenAI, databases, etc.
+- **Complexity level**: Simple (≤10 nodes), Medium (10-25), Complex (>25)
+- **User skill level**: Beginner, intermediate, advanced
+- **Time constraints**: Quick setup (<30 min) or comprehensive solution
+
+This information will enable efficient template discovery in the planning phase.
+
+### Core Principles
+
+1. **Clarify user intent** - Ask follow-up questions if the request is unclear
+2. **Think about the logic** - Consider the workflow flow before writing the spec
+3. **Avoid premature HOW decisions** - Focus on WHAT, not specific node types
+4. **Standard nodes preferred** - Specs should favor standard n8n capabilities over custom code
+5. **Template awareness** - Note characteristics that might match existing templates
+
 ## Outline
 
 The text the user typed after this command **is** the workflow description. Do not ask the user to repeat it unless they provided an empty command.

@@ -15,6 +15,110 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Transform the workflow specification into a concrete technical design with node selections, data flow architecture, and implementation-ready configuration details.
 
+## n8n-MCP Workflow Process
+
+**MANDATORY: Start with documentation**
+```javascript
+mcp_n8n-mcp_tools_documentation() // Understand best practices and available tools
+```
+
+### Template-First Approach
+
+**ALWAYS check for existing templates before building from scratch** (2,500+ available!)
+
+#### 1. Template Discovery Strategies
+
+**By Complexity & Skill Level:**
+```javascript
+// For beginners
+mcp_n8n-mcp_search_templates_by_metadata({
+  complexity: "simple",
+  maxSetupMinutes: 30
+})
+
+// For specific roles
+mcp_n8n-mcp_search_templates_by_metadata({
+  targetAudience: "marketers", // or "developers" or "analysts"
+  maxSetupMinutes: 15
+})
+```
+
+**By Task Type:**
+```javascript
+mcp_n8n-mcp_get_templates_for_task('webhook_processing')
+mcp_n8n-mcp_get_templates_for_task('slack_integration')
+mcp_n8n-mcp_get_templates_for_task('ai_automation')
+```
+
+**By Service/Node:**
+```javascript
+mcp_n8n-mcp_search_templates('slack notification')
+mcp_n8n-mcp_list_node_templates(['n8n-nodes-base.slack'])
+```
+
+**By Required Service:**
+```javascript
+mcp_n8n-mcp_search_templates_by_metadata({
+  requiredService: "openai", // or "slack", "google", etc.
+  complexity: "medium"
+})
+```
+
+#### 2. Template Attribution (MANDATORY)
+
+**When using any template, you MUST:**
+- Share the author's name and username
+- Provide direct link to original template on n8n.io
+- Example format: 
+  > "This workflow is based on a template by **David Ashby** (@cfomodz). View the original at: https://n8n.io/workflows/2414"
+
+#### 3. Node Discovery (If No Suitable Template)
+
+**Search by functionality:**
+```javascript
+mcp_n8n-mcp_search_nodes({query: 'webhook', mode: 'OR'})
+```
+
+**Browse by category:**
+```javascript
+mcp_n8n-mcp_list_nodes({category: 'trigger', limit: 50})
+```
+
+**Find AI-capable nodes:**
+```javascript
+mcp_n8n-mcp_list_ai_tools() // Remember: ANY node can be an AI tool!
+```
+
+#### 4. Node Configuration Discovery
+
+**Start efficient (essentials only):**
+```javascript
+mcp_n8n-mcp_get_node_essentials(nodeType) // 10-20 essential properties
+```
+
+**Find specific properties:**
+```javascript
+mcp_n8n-mcp_search_node_properties(nodeType, 'auth')
+```
+
+**Get pre-configured examples:**
+```javascript
+mcp_n8n-mcp_get_node_essentials(nodeType, {includeExamples: true})
+```
+
+**Human-readable docs (when needed):**
+```javascript
+mcp_n8n-mcp_get_node_documentation(nodeType)
+```
+
+### Core Design Principles
+
+- **Templates save 70-90% development time** - Always check first
+- **USE STANDARD NODES FIRST** - Code node only when absolutely necessary
+- **Validate early and often** - Catch errors before building
+- **Show visual architecture** - Present workflow diagram to user before implementing
+- **Smart filtering** - Use metadata to find skill-appropriate templates
+
 ## Execution Steps
 
 ### 1. Setup

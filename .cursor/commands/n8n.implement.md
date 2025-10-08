@@ -15,6 +15,84 @@ You **MUST** consider the user input before proceeding (if not empty).
 
 Execute the implementation plan by building the n8n workflow according to tasks.md, validating at each phase, and producing a production-ready workflow JSON.
 
+## n8n-MCP Validation Strategy
+
+### Pre-Build Validation (REQUIRED)
+
+**Validate node configurations BEFORE building:**
+
+```javascript
+// 1. Quick required fields check
+mcp_n8n-mcp_validate_node_minimal(nodeType, {})
+
+// 2. Full operation-aware validation
+mcp_n8n-mcp_validate_node_operation(nodeType, fullConfig, {profile: 'runtime'})
+```
+
+**Fix ALL validation errors before proceeding to build.**
+
+### Build Phase Guidelines
+
+**Template Usage:**
+- If using template: `mcp_n8n-mcp_get_template(templateId, {mode: "full"})`
+- **MANDATORY ATTRIBUTION**: 
+  > "This workflow is based on a template by **[author.name]** (@[author.username]). View the original at: [url]"
+
+**Node Preferences:**
+- **AVOID Code Node unless absolutely necessary**
+- Prefer standard n8n nodes over custom code
+- Use Code node only when standard nodes cannot achieve the requirement
+
+**Visual Validation:**
+- Present workflow architecture diagram to user
+- Ask for approval before proceeding with implementation
+
+**Build in Artifact:**
+- Build workflow JSON in an artifact for easy editing
+- Unless user explicitly requested creation in n8n instance
+
+### Post-Build Validation (REQUIRED)
+
+**Validate complete workflow BEFORE deployment:**
+
+```javascript
+// 1. Complete workflow validation (structure + connections + expressions)
+mcp_n8n-mcp_validate_workflow(workflow)
+
+// 2. Connection and structure validation
+mcp_n8n-mcp_validate_workflow_connections(workflow)
+
+// 3. Expression syntax validation
+mcp_n8n-mcp_validate_workflow_expressions(workflow)
+```
+
+**Fix ALL issues found before deployment.**
+
+### Post-Deployment Validation
+
+**If deployed to n8n instance:**
+
+```javascript
+// 1. Validate deployed workflow
+mcp_n8n-mcp_n8n_validate_workflow({id: workflowId})
+
+// 2. Monitor execution status
+mcp_n8n-mcp_n8n_list_executions({workflowId})
+```
+
+### Update Strategy
+
+**Use diff operations for efficiency (80-90% token savings):**
+
+```javascript
+mcp_n8n-mcp_n8n_update_partial_workflow({
+  workflowId: id,
+  operations: [
+    {type: 'updateNode', nodeId: 'node1', changes: {position: [100, 200]}}
+  ]
+})
+```
+
 ## Execution Steps
 
 ### 1. Initialize Implementation Context
