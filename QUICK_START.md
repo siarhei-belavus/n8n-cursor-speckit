@@ -5,7 +5,7 @@
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/n8n-cursor-speckit.git
+git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 cd n8n-cursor-speckit
 ```
 
@@ -159,7 +159,7 @@ npm run n8n:install -- --force
 ## Support
 
 - Documentation: See `README.md` or `n8n-speckit-README.md`
-- Issues: https://github.com/yourusername/n8n-cursor-speckit/issues
+- Issues: https://github.com/siarhei-belavus/n8n-cursor-speckit/issues
 - Examples: See the README for common patterns
 
 Happy workflow building! 🚀

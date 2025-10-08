@@ -5,7 +5,7 @@
 ### Step 1: Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/n8n-cursor-speckit.git
+git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 cd n8n-cursor-speckit
 ```
 
@@ -90,7 +90,7 @@ Installation Summary:
 
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/n8n-cursor-speckit.git
+git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 cd n8n-cursor-speckit
 npm run install:n8n-sk
 

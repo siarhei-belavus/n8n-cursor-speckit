@@ -32,7 +32,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/n8n-cursor-speckit.git"
+    "url": "https://github.com/siarhei-belavus/n8n-cursor-speckit.git"
   },
   "engines": {
     "node": ">=14.0.0"

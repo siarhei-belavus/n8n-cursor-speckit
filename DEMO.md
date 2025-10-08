@@ -24,7 +24,7 @@
 ### Step 1: Clone
 
 ```bash
-$ git clone https://github.com/yourusername/n8n-cursor-speckit.git
+$ git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 $ cd n8n-cursor-speckit
 ```
 
@@ -245,7 +245,7 @@ my-n8n-project/
 
 ```bash
 # 1. Clone speckit repo
-git clone https://github.com/yourusername/n8n-cursor-speckit.git
+git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 
 # 2. Create your n8n project
 mkdir ~/my-n8n-workflows
@@ -270,7 +270,7 @@ cursor .
 
 ```bash
 # 1. Clone speckit
-git clone https://github.com/yourusername/n8n-cursor-speckit.git
+git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 
 # 2. Install to existing project
 cd n8n-cursor-speckit
@@ -307,7 +307,7 @@ cursor .
 
 ```bash
 # One-time setup
-git clone https://github.com/yourusername/n8n-cursor-speckit.git
+git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 cd n8n-cursor-speckit
 npm run install:n8n-sk
 

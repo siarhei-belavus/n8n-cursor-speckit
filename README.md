@@ -8,7 +8,7 @@
 
 ```bash
 # 1. Clone the repository
-git clone https://github.com/yourusername/n8n-cursor-speckit.git
+git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 cd n8n-cursor-speckit
 
 # 2. Run the interactive installer

@@ -30,7 +30,7 @@ Have an idea for improvement?
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/n8n-cursor-speckit.git
+git clone https://github.com/siarhei-belavus/n8n-cursor-speckit.git
 cd n8n-cursor-speckit
 
 # Test the installation script
