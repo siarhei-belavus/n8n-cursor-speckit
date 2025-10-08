@@ -148,6 +148,48 @@ async function copyDirectory(sourceDir, targetDir, options = {}) {
   return stats;
 }
 
+// Make scripts in .specify folder executable
+function makeScriptsExecutable(targetDir) {
+  const specifyDir = path.join(targetDir, '.specify');
+  
+  if (!fs.existsSync(specifyDir)) {
+    return { count: 0, failed: 0 };
+  }
+
+  let count = 0;
+  let failed = 0;
+
+  function processDirectory(dir) {
+    try {
+      const items = fs.readdirSync(dir);
+      
+      for (const item of items) {
+        const fullPath = path.join(dir, item);
+        const stat = fs.statSync(fullPath);
+        
+        if (stat.isDirectory()) {
+          processDirectory(fullPath);
+        } else if (stat.isFile() && (item.endsWith('.sh') || item.endsWith('.bash'))) {
+          try {
+            fs.chmodSync(fullPath, 0o755);
+            log(`  ✓ Made executable: ${path.relative(targetDir, fullPath)}`, colors.green);
+            count++;
+          } catch (error) {
+            log(`  ✗ Failed to chmod: ${path.relative(targetDir, fullPath)} - ${error.message}`, colors.red);
+            failed++;
+          }
+        }
+      }
+    } catch (error) {
+      log(`  ✗ Error processing directory: ${dir} - ${error.message}`, colors.red);
+      failed++;
+    }
+  }
+
+  processDirectory(specifyDir);
+  return { count, failed };
+}
+
 // Prompt user for yes/no
 function prompt(question) {
   const rl = readline.createInterface({
@@ -298,6 +340,17 @@ async function install() {
     if (result.forceAll) {
       force = true;
     }
+  }
+
+  // Make scripts executable
+  log('\n🔧 Making scripts executable:\n', colors.bright);
+  const chmodStats = makeScriptsExecutable(targetDir);
+  if (chmodStats.count > 0) {
+    log(`  ✓ Made ${chmodStats.count} script(s) executable`, colors.green);
+  }
+  if (chmodStats.failed > 0) {
+    log(`  ✗ Failed to chmod ${chmodStats.failed} script(s)`, colors.red);
+    totalFailed += chmodStats.failed;
   }
 
   // Summary
