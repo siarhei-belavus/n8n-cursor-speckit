@@ -1151,7 +1151,7 @@ import { execSync } from 'child_process';
 
 test('workflow returns expected output', () => {
   const output = execSync(
-    'n8n execute --file workflow.json --rawOutput',
+    'n8n execute --id <workflow-id>',
     { encoding: 'utf8' }
   );
   const result = JSON.parse(output);
@@ -1161,7 +1161,7 @@ test('workflow returns expected output', () => {
 
 test('workflow handles invalid input', () => {
   try {
-    execSync('n8n execute --file workflow.json --rawOutput', {
+    execSync('n8n execute --id <workflow-id>', {
       input: JSON.stringify({invalid: 'data'}),
       encoding: 'utf8'
     });
@@ -1379,7 +1379,7 @@ test('test 1')
 **5. Failure Reporting**
 ```javascript
 test('workflow processes orders', () => {
-  const result = execSync('n8n execute --file workflow.json').toString();
+  const result = execSync('n8n execute --id <workflow-id>').toString();
   const output = JSON.parse(result);
   
   // Good: Descriptive assertion

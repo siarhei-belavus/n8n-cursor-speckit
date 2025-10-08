@@ -395,7 +395,7 @@ describe('Workflow Execution Tests', () => {
 
   test('happy path execution succeeds', () => {
     const output = execSync(
-      `n8n execute --file ${workflowPath} --rawOutput`,
+      `n8n execute --id ${workflowId}`,
       { encoding: 'utf8' }
     );
     const result = JSON.parse(output);
@@ -408,7 +408,7 @@ describe('Workflow Execution Tests', () => {
     // Execute with invalid data and check error handling
     try {
       execSync(
-        `n8n execute --file ${workflowPath} --rawOutput`,
+        `n8n execute --id ${workflowId}`,
         { input: testData, encoding: 'utf8' }
       );
     } catch (error) {
@@ -438,8 +438,8 @@ Execute workflow via CLI and validate outputs:
 
 **Happy Path Test:**
 ```bash
-# Execute with valid test data
-n8n execute --file workflows/[name].json --rawOutput > test-results/happy-path.json
+# Execute workflow by ID with valid test data
+n8n execute --id <workflow-id> > test-results/happy-path.json
 
 # Validate output
 node -e "
@@ -455,7 +455,7 @@ node -e "
 # Test error handling with invalid input
 for testFile in test-data/error-*.json; do
   echo "Testing: $testFile"
-  n8n execute --file workflows/[name].json --rawOutput < "$testFile" > test-results/$(basename "$testFile")
+  n8n execute --id <workflow-id> < "$testFile" > test-results/$(basename "$testFile")
   # Validate error was handled correctly
 done
 ```
@@ -463,13 +463,13 @@ done
 **Edge Case Tests:**
 ```bash
 # Test with empty input
-n8n execute --file workflows/[name].json --rawOutput < test-data/empty.json
+n8n execute --id <workflow-id> < test-data/empty.json
 
 # Test with large volume
-n8n execute --file workflows/[name].json --rawOutput < test-data/large-volume.json
+n8n execute --id <workflow-id> < test-data/large-volume.json
 
 # Test with malformed data
-n8n execute --file workflows/[name].json --rawOutput < test-data/malformed.json
+n8n execute --id <workflow-id> < test-data/malformed.json
 ```
 
 **Duration**: < 30 seconds per test

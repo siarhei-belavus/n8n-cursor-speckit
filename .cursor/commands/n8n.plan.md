@@ -385,7 +385,8 @@ return items.map(item => ({
   import { execSync } from 'child_process';
   
   test('workflow returns expected output', () => {
-    const output = execSync('n8n execute --file workflow.json --rawOutput').toString();
+    // Execute using n8n API or workflow ID
+    const output = execSync('n8n execute --id <workflow-id>').toString();
     const result = JSON.parse(output);
     expect(result[0].json.status).toBe('success');
   });
